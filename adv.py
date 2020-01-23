@@ -2,7 +2,7 @@ from room import Room
 from player import Player
 from world import World
 
-import random
+import random # to use shuffle
 from ast import literal_eval
 
 # Load world
@@ -13,7 +13,7 @@ world = World()
 # map_file = "maps/test_line.txt"
 # map_file = "maps/test_cross.txt"
 # map_file = "maps/test_loop.txt"
-# map_file = "maps/test_loop_fork.txt"
+# map_file = "maps/test_loop_fork.txt" #try to solve for this first
 map_file = "maps/main_maze.txt"
 
 # Loads the map into a dictionary
