@@ -1,6 +1,7 @@
 from room import Room
 from player import Player
 from world import World
+from util import Queue
 
 import random # to use shuffle
 from ast import literal_eval
@@ -13,8 +14,8 @@ world = World()
 # map_file = "maps/test_line.txt"
 # map_file = "maps/test_cross.txt"
 # map_file = "maps/test_loop.txt"
-# map_file = "maps/test_loop_fork.txt" #try to solve for this first
-map_file = "maps/main_maze.txt"
+map_file = "maps/test_loop_fork.txt" #try to solve for this first
+# map_file = "maps/main_maze.txt"
 
 # Loads the map into a dictionary
 room_graph=literal_eval(open(map_file, "r").read())
@@ -24,12 +25,14 @@ world.load_graph(room_graph)
 world.print_rooms()
 
 player = Player(world.starting_room)
+print("PLAYER", player)
 
 # Fill this out with directions to walk
 # traversal_path = ['n', 'n']
 traversal_path = []
+print("T PATH", traversal_path)
 
-
+#BFS for unexplored rooms - grid shortest path
 
 # TRAVERSAL TEST
 visited_rooms = set()
