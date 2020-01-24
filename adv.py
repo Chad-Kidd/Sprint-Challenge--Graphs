@@ -1,7 +1,7 @@
 from room import Room
 from player import Player
 from world import World
-from util import Queue
+from util import Queue, Stack
 
 import random # to use shuffle
 from ast import literal_eval
@@ -28,16 +28,48 @@ player = Player(world.starting_room)
 print("PLAYER", player)
 
 # Fill this out with directions to walk
-# traversal_path = ['n', 'n']
+traversal_path = ['n', 's', 'e', 'w']
 traversal_path = []
 print("T PATH", traversal_path)
 
-#BFS for unexplored rooms - grid shortest path
+#DFS for unexplored rooms
+# DO DFS Start by writing an algorithm that picks a random unexplored 
+# direction from the player's current room, travels and logs that 
+# direction, then loops.
+
+# The depth-first search uses a Stack to remember where it should 
+# go when it reaches a dead end.
+# https://medium.com/basecs/breaking-down-breadth-first-search-cebe696709d9
+# for quick reference of DFS and BFS
+
+def unexplored_rooms(current_path, room_id, player): #from world.py
+# reference social project
+    visited = set()
+  
+    q = Queue()
+    path = [room_id]
+    
+    q.enqueue([path])
+
+    while q.size() > 0:
+        path = q.dequeue()
+        vroom = path[0]
+
+    if vroom not in visited:
+        visited[vroom] = path
+        print("VISITED CUE", visited)
+
+        for neighbors in current_path[vroom]:
+            copy_of_path = path.copy()
+            copy_of_path.insert(0, node)
+            q.enqueue(copy_of_path)
 
 # TRAVERSAL TEST
 visited_rooms = set()
 player.current_room = world.starting_room
 visited_rooms.add(player.current_room)
+
+
 
 for move in traversal_path:
     player.travel(move)
